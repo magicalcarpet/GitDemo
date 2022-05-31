@@ -1,0 +1,1227 @@
+EXERCISE 1: Linux Mint Virtual Machine
+Create a Linux Mint Virtual Machine on your computer. Check the distribution, which package manager it uses (yum, apt, apt-get). Which CLI editor is configured (Nano, Vi, Vim). What software center/software manager it uses. Which shell is configured for your user. 
+
+
+EXERCISE 2: Bash Script - Install Java
+Write a bash script using Vim editor that installs the latest java version and checks whether java was installed successfully by executing a java -version command. Checks if it was successful and prints a success message, if not prints a failure message. 
+
+
+EXERCISE 3: Bash Script - User Processes
+Write a bash script using Vim editor that checks all the processes running for the current user (USER env var) and prints out the processes in console. Hint: use ps aux command and grep for the user.
+
+
+EXERCISE 4: Bash Script - User Processes Sorted
+Extend the previous script to ask for a user input for sorting the processes output either by memory or CPU consumption, and print the sorted list.
+
+
+EXERCISE 5: Bash Script - Number of User Processes Sorted
+Extend the previous script to ask additionally for user input about how many processes to print. Hint: use head program to limit the number of outputs. 
+
+
+Context: We have a ready NodeJS application that needs to run on a server. The app is already configured to read in environment variables.
+
+EXERCISE 6: Bash Script - Start Node App
+Write a bash script with following logic: 
+
+Install NodeJS and NPM and print out which versions were installed
+Download an artifact file from the URL: https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz. Hint: use curl or wget
+Unzip the downloaded file
+Set the following needed environment variables: APP_ENV=dev, DB_USER=myuser, DB_PWD=mysecret
+Change into the unzipped package directory
+Run the NodeJS application by executing the following commands:  npm install and node server.js
+Notes:
+
+Make sure to run the application in background so that it doesn't block the terminal session where you execute the shell script
+If any of the variables is not set, the node app will print error message that env vars is not set and exit
+It will give you a warning about LOG_DIR variable not set. You can ignore it for now.
+
+
+EXERCISE 7: Bash Script - Node App Check Status
+Extend the script to check after running the application that the application has successfully started and prints out the application's running process and the port where it's listening. 
+
+
+EXERCISE 8: Bash Script - Node App with Log Directory
+Extend the script to accept a parameter input log_directory: a directory where application will write logs.
+
+The script will check whether the parameter value is a directory name that doesn't exist and will create the directory, if it does exist, it sets the env var LOG_DIR to the directory's absolute path before running the application, so the application can read the LOG_DIR environment variable and write its logs there.
+
+Note:
+
+Check the app.log file in the provided LOG_DIR directory.
+This is what the output of running the application must look like: node-app-output.png
+
+
+EXERCISE 9: Bash Script - Node App with Service user
+You've been running the application with your user. But we need to adjust that and create own service user: myapp for the application to run. So extend the script to create the user and then run the application with the service user. 
+
+You can find example solutions here: https://gitlab.com/devops-bootcamp3/linux/-/blob/feature/solutions/Solutions.md
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+3 - Version Control with Git
+Exercises for Module "Version Control with Git"
+
+
+Use repository: https://gitlab.com/devops-bootcamp3/git-project
+
+
+EXERCISE 1: Clone and create new repository
+Clone git repository, creating a new local copy and
+Push it to your own Gitlab remote repository.
+
+
+EXERCISE 2: .gitignore
+You see that build folders and editor specific folders are in the repository and decide to ignore it as a best practice.
+
+Ignore .idea folder, .DS_Store, out and build folders
+
+
+Hint: remove from git cache first
+
+
+EXERCISE 3: Feature branch
+Create a feature branch and change following:
+
+Upgrade the logstash-logback-encoder version to 6.6
+Add image to the index.html file (url: https://www.careeraddict.com/uploads/article/58721/illustration-group-people-team-meeting.jpg)
+You are done with the changes. So:
+
+Check your changes using "git diff" and
+Commit them if everything is correct.
+Note: There is a standard in your team to name commits with descriptive text.
+
+Push your changes to your remote repository.
+
+
+EXERCISE 4 - Bugfix branch
+You find out there is a bug in your project, so you need to fix it using a new bugfix branch:
+
+Create a new bugfix branch
+Fix the spelling error in Application.java file
+You are done with the changes. So:
+
+Check your changes using "git diff" and
+Commit them if everything is correct.
+Push your changes to your remote repository.
+
+
+EXERCISE 5: Merge request
+You are done with the feature, now it needs to be tested and deployed. So:
+
+Merge your feature branch into master (using a merge request)
+
+
+EXERCISE 6: Fix merge conflict
+Your are on the bugfix branch. You notice the logger library version is old, so:
+
+Update it to version 6.2 (Change the same location in bugfix branch)
+Some time went by since you opened your bugfix branch, so you want the up-to-date master state to avoid major conflicts.
+
+Merge the master branch in your bugfix branch - fix the merge conflict!
+
+
+EXERCISE 7: Revert commit
+Still on the bugfix branch. You also noticed a spelling mistake in the index.html file, so you want to fix that in the same branch.
+
+Fix the spelling mistake and commit the fix
+You also want to update the image.
+
+So also change the image url (src) in a separate commit.
+You are done with the changes:
+
+Push both commits to the remote repository.
+
+
+Your team members tell you the previous image was the correct one, so you want to undo it. But since you already pushed to remote, you must revert the change.
+
+Revert the last commit and push your changes to remote repository
+
+
+EXERCISE 8: Reset commit
+You found 1 last thing you think must be fixed. Bruno just moved to DevOps team, so Bruno's role must be fixed.
+
+Update the text accordingly
+Commit that fix locally (don't push to remote)
+However after talking to a colleague, you find out it has already been fixed in another branch. So you want to undo your local commit.
+
+Since commit is only locally, you can reset the commit.
+
+
+EXERCISE 9: Merge
+This time you want to merge your branch directly into master without merge request. So:
+
+merge your bugfix branch into master using git CLI (Hint: master branch must be up-to-date before the merge)
+Being on the master branch now. Push your merge commit to remote repository
+
+
+EXERCISE 10: Delete branches
+Now that you are done, both feature and bugfix got deployed and you want to cleanup the old branches.
+
+Delete both branches both locally and remotely
+
+
+
+
+Exercise Solutions
+
+You can find example solutions here: https://gitlab.com/devops-bootcamp3/git-project/-/blob/feature/solutions/Solutions.md
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+4 - Build Tools & Package Manager Tools
+Exercises for Module "Build Tools and Package Manager"
+
+Use repository: https://gitlab.com/devops-bootcamp3/java-gradle-app
+
+
+Your team wants to build out a small helper library in Java and asks you to take over the project.
+
+
+
+EXERCISE 0: Clone project and create own Git repository
+To work with the project for the exercises:
+
+Clone the project and
+create your own project/git repository from it
+
+EXERCISE 1: Build jar artifact
+You want to deploy the artifact to share that library with all team members. So:
+
+try to build the jar file
+The Build will fail, because of a compile error in a test, so you can't build the jar.
+
+
+
+EXERCISE 2: Run tests
+Fix the test, by changing "true" string to true boolean.
+Run gradle test to execute only the tests and check the fix.
+
+
+EXERCISE 3: Clean and build App
+You fixed the test. Now:
+
+clean the build folder with gradle clean and
+try to build jar file again.
+
+
+EXERCISE 4: Start application
+Start the jar file to test that the application runs successfully as a jar file
+
+Start app with java -jar app-1.0.jar
+NOTE: replace "app-1.0.jar" with the name of YOUR jar file.
+
+
+
+EXERCISE 5: Start App with 2 Parameters
+Now you want to add parameters to your application, so you and other users can pass different values on startup.
+
+Add parameter input to the Java code (see code snippet below, which you can copy)*
+Rebuild the jar file
+Execute the jar file again with 2 params
+# Code snippet for Exercise 5!
+# Code snippet to add inside Application.java on line 16
+
+Logger log = LoggerFactory.getLogger(Application.class);
+try {
+      String one = args[0];
+      String two = args[1];
+      log.info("Application will start with the parameters {} and {}", one, two);
+} catch (Exception e) {
+      log.info("No parameters provided");
+}
+
+
+
+
+Exercise Solutions
+
+You can find example solutions here: https://gitlab.com/devops-bootcamp3/java-gradle-app/-/blob/feature/solutions/Solutions.md
+
+
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+5 - Cloud & IaaS Basics - DigitalOcean
+Exercises for Module "Cloud & IaaS - DigitalOcean"
+
+
+Use repository: https://gitlab.com/devops-bootcamp3/node-project
+
+
+You are asked to create a simple NodeJS app that lists all the projects each developer is working on. Everyone on your team wants to be able to see the list themselves and share with the project managers, so they ask you to make it available online, so everyone can access it.
+
+
+
+EXERCISE 0: Clone Git Repository
+For that you can use my provided git repository.
+
+clone the git repository and
+create your own project/git repo from it
+
+
+EXERCISE 1: Package NodeJS App
+To have just 1 file, you create an artifact from the Node App. So you do the following:
+
+Package your Node app into a tar file (npm pack)
+
+
+EXERCISE 2: Create a new server
+Your company uses DigitalOcean as Infrastructure as a Service platform, instead of having on-premise servers. So you:
+
+Create a new droplet server on DigitalOcean
+
+
+EXERCISE 3: Prepare server to run Node App
+Now you have a new fresh server nothing installed on it. Because you want to run a NodeJS application you need to install Node and npm on it:
+
+Install nodejs & npm on it
+
+
+EXERCISE 4: Copy App and package.json
+Having everything prepared for the application, you finally:
+
+Copy your simple Nodejs app tar file and package.json to the droplet
+
+
+EXERCISE 5: Run Node App
+Start the node application in detached mode (npm install and node server.js commands)
+
+
+EXERCISE 6: Access from browser - configure firewall
+You see that the application is not accessible through the browser, because all ports are closed on the server. So you:
+
+Open the correct port on Droplet
+and access the UI from browser
+
+
+
+
+Exercise Solutions
+
+You can find example solutions here: https://gitlab.com/devops-bootcamp3/node-project/-/blob/feature/solutions/Solutions.md
+
+
+
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+6 - Artifact Repository Manager with Nexus
+Exercises for Module "Artifact Repository Manager with Nexus"
+
+You and other teams in 2 different projects in your company see at some point, that they have many different small projects, the NodeJS application you built in the previous step, the java-gradle helper application and so on. So you discuss and decide it will be good to be able to keep all these app artifacts in 1 place, where each team can keep their app artifacts and can access them when they need.
+
+So they ask you to setup Nexus in the company and create repositories for 2 different projects.
+
+
+
+EXERCISE 1: Install Nexus on a server
+If you already followed the demo in the Nexus module for installing Nexus, then you can use that one.
+
+If not, you can watch the module demo video to install Nexus.
+
+
+
+EXERCISE 2: Create npm hosted repository
+For a Node application you:
+
+create a new npm hosted repository with a new blob store
+
+
+EXERCISE 3: Create user for team 1
+You create Nexus user for the project 1 team to have access to this npm repository
+
+
+EXERCISE 4: Build and publish npm tar
+You want to test that the project 1 user has correct access configured. So you:
+
+build and publish a nodejs tar package to the npm repo
+
+
+Use: Node application from Cloud & IaaS Basics exercises
+
+Hint:
+
+# for publishing project tar file 
+npm publish --registry={npm-repo-url-in-nexus} {package-name}
+
+
+EXERCISE 5: Create maven hosted repository
+For a Java application you:
+
+create a new maven hosted repository
+
+
+EXERCISE 6: Create user for team 2
+You create a Nexus user for project 2 team to have access to this maven repository
+
+
+EXERCISE 7: Build and publish jar file
+You want to test that the project 2 user has the correct access configured and also upload the first version. So:
+
+build and publish the jar file to the new repository using the team 2 user.
+
+
+Use: Java-Gradle application from Build Tools exercises
+
+
+
+EXERCISE 8: Download from Nexus and start application
+Create new user for droplet server that has access to both repositories
+On a digital ocean droplet, using Nexus Rest API, fetch the download URL info for the latest NodeJS app artifact
+Execute a command to fetch the latest artifact itself with the download URL
+Untar it and run on the server!
+Hint:
+
+# fetch download URL with curl
+curl -u {user}:{password} -X GET 'http://{nexus-ip}:8081/service/rest/v1/components?repository={node-repo}&sort=version'
+
+
+
+
+EXERCISE 9: Automate
+You decide to automate the fetching from Nexus and starting the application So you:
+
+Write a script that fetches the latest version from npm repository. Untar it and run on the server!
+Execute the script on the droplet
+Hints:
+
+# save the artifact details in a json file
+curl -u {user}:{password} -X GET 'http://{nexus-ip}:8081/service/rest/v1/components?repository={node-repo}&sort=version' | jq "." > artifact.json
+
+# grab the download url from the saved artifact details using 'jq' json processor tool
+artifactDownloadUrl=$(jq '.items[].assets[].downloadUrl' artifact.json --raw-output)
+
+# fetch the artifact with the extracted download url using 'wget' tool
+wget --http-user={user} --http-password={password} $artifactDownloadUrl
+
+
+
+------------------------------------------------------------------------------------------------
+
+
+
+
+7 - Containers with Docker
+Exercises for Module "Containers with Docker"
+
+Use repository: https://gitlab.com/devops-bootcamp3/bootcamp-java-mysql
+
+Your team member has improved your previous static java application and added mysql database connection, to let users edit information and save the edited data.
+
+They ask you to configure and run the application with Mysql database on a server using docker-compose.
+
+
+
+EXERCISE 0: Clone Git repository and create your own
+You will be working with this project for the next following modules.
+
+You can check out the code changes and notice that we are using environment variables for the database and its credentials inside the application.
+
+This is very important for 2 main reasons:
+
+First you don't want to expose the password to your database by hardcoding it into the app and checking it into the repository!
+Second, these values may change based on environment, so you want to be able to set them dynamically when deploying the application, instead of hardcoding them.
+
+EXERCISE 1: Start Mysql container
+First you want to test the application locally with mysql database. But you don't want install Mysql, you want to get started fast, so you start it as a docker container.
+
+Start mysql container locally using the official Docker image. Set all needed environment variables.
+Export all needed environment variables for your application for connecting with the database (check variable names inside the code)
+Build jar file and start the application. Test access from browser. Make some change.
+
+
+EXERCISE 2: Start Mysql GUI container
+Now you have a database, you want to be able to see the database data using a UI tool, so you decide to deploy phpmyadmin. Again, you don't want to install it locally, so you want to start it also as a docker container.
+
+Start phpmyadmin container using the official image.
+Access your phpmyadmin from browser and test logging in to your Mysql database
+
+
+EXERCISE 3: Use docker-compose for Mysql and Phpmyadmin
+You have 2 containers your app needs and you don't want to start them separately all the time. So you configure a docker-compose file for both:
+
+Create a docker-compose file with both containers
+Configure volume for your DB
+Test that everything works again
+
+
+
+
+EXERCISE 4: Dockerize your Java Application
+Now you are done with testing the application locally with Mysql database and want to deploy it on the server to make it accessible for others in the team, so they can edit information.
+
+And since your DB and DB UI are running as docker containers, you want to make your app also run as a docker container. So you can all start them using 1 docker-compose file on the server. So you do the following:
+
+Create Dockerfile for your java application
+
+
+EXERCISE 5: Build and push Java Application Docker Image
+Now for you to be able to run your java app as a docker image on a remote server, it must be first hosted on a docker repository, so you can fetch it from there on the server. Therefore, you have to do the following:
+
+Create docker hosted repository on Nexus
+Build the image locally and push to the repository
+
+EXERCISE 6: Add application to docker-compose
+Add your application's docker image to docker-compose. Configure all needed env vars.
+
+
+Now your app and Mysql containers in your docker-compose are using environment variables.
+
+Make all these environment variable values configurable, by setting them on the server when deploying.
+INFO: Again, since docker-compose is part of your application and checked in to the repo, it shouldn't contain any sensitive data. But also allow configuring these values from outside based on an environment
+
+
+
+EXERCISE 7: Run application on server with docker-compose
+Finally your docker-compose file is completed and you want to run your application on the server with docker-compose. For that you need to do the following:
+
+Set insecure docker repository on server, because Nexus is http
+Do docker login on the server to be allowed to pull the image
+Your application index.html has a hardcoded localhost as a HOST to send requests to backend. You need to fix that and set the server IP address instead, because the server is going to be the host when you deploy the application on a remote server. (Don't forget to rebuild and push the image and if needed adjust the docker-compose file)
+Copy docker-compose.yaml to the server
+Set the needed environment variables for all containers in docker-compose
+Run docker-compose to start all 3 containers
+
+
+EXERCISE 8: Open ports
+Congratulations! Your application is running on the server, but you still can't access the application from the browser. You know you need to configure firewall settings. So do the following:
+
+Open the necessary port on the server firewall and
+Test access from the browser
+
+
+
+
+Exercise Solutions
+
+You can find example solutions here: https://gitlab.com/devops-bootcamp3/bootcamp-java-mysql/-/blob/feature/solutions/Solutions.md
+
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+8 - Build Automation & CI/CD with Jenkins
+Exercises for Module "Build Automation & CI/CD with Jenkins"
+
+
+Use repository: https://gitlab.com/devops-bootcamp3/node-project
+
+
+Your team members want to collaborate on your NodeJS application, where you list developers with their projects. So they ask you to set up a git repository for it.
+
+Also, you think it's a good idea to add tests, to test that no one accidentally breaks the existing code.
+
+Moreover, you all decide every change should be immediately built and pushed to the Docker repository, so everyone can access it right away.
+
+For that they ask you to set up a continuous integration pipeline.
+
+
+
+EXERCISE 1: Dockerize your NodeJS App
+Configure your application to be built as a Docker image.
+
+Dockerize your NodeJS app
+
+
+EXERCISE 2: Create a full pipeline for your NodeJS App
+You want the following steps to be included in your pipeline:
+
+Increment version
+The application's version and docker image version should be incremented.
+
+Run tests
+You want to test the code, to be sure to deploy only working code. When tests fail, the pipeline should abort.
+
+Build docker image with incremented version
+Push to Docker repository
+Commit to Git
+The application version increment must be committed and pushed to a remote Git repository.
+
+
+
+EXERCISE 3: Manually deploy new Docker Image on server
+After the pipeline has run successfully, you:
+
+Manually deploy the new docker image on the droplet server.
+
+
+EXERCISE 4: Extract into Jenkins Shared Library
+A colleague from another project tells you, they are building a similar Jenkins pipeline and they could use some of your logic. So you suggest creating a Jenkins Shared Library to make your Jenkinsfile code reusable and shareable.
+
+Therefore, you do the following:
+
+Extract all logic into Jenkins-shared-library with parameters and reference it in Jenkinsfile.
+
+
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+ 9 - AWS Services
+Exercises for Module "AWS Services"
+
+
+Your company decided that they will use AWS as a cloud provider to deploy their applications. It's too much overhead to manage multiple platforms including the billing etc.
+
+So you need to deploy the previous NodeJS application on an EC2 instance now. This means you need to create and prepare an EC2 server with the AWS Command Line Tool to run your NodeJS app container on it.
+
+
+
+You know there are many steps to set this up, so you go through it with step by step exercises.
+
+
+
+EXERCISE 1: Create IAM user
+First of all, you need an IAM user with correct permissions to execute the tasks below.
+
+Create a new IAM user "your name" with "devops" user-group with
+all needed permissions to execute the tasks below - with login and CLI credentials
+Note: Do that using the AWS UI with Admin User
+
+
+
+EXERCISE 2: Configure AWS CLI
+You want to use the AWS CLI for the following tasks. So, to be able to interact with the AWS account from the AWS Command Line tool you need to configure it correctly:
+
+Set credentials for that user for AWS CLI
+Configure correct region for your AWS CLI
+
+
+EXERCISE 3: Create VPC
+You want to create the EC2 Instance in a dedicated VPC, instead of using the default one. So you:
+
+create a new VPC with 1 subnet and
+crate a security group in the VPC that will allow you access on ssh port 22 and will allow browser access to your Node application
+(using the AWS CLI)
+
+
+
+EXERCISE 4: Create EC2 Instance
+Once the VPC is created, you:
+
+Create an EC2 instance in that VPC
+with the security group you just created and ssh key file (using the AWS CLI)
+
+
+EXERCISE 5: SSH into the server and install Docker on it
+Once the EC2 instance is created successfully, you want to prepare the server to run Docker containers. So you:
+
+ssh into the server and
+install Docker on it to run the dockerized application later
+
+
+Set up Continuous Deployment
+
+
+Now you don't want to deploy manually to the server all the time, because it's time consuming and also sometimes you miss it, when changes are made and the new docker image is built by the pipeline. When you forget to check the pipeline, your team members need to write you and ask you to deploy the new version.
+
+As a solution you want to automate this thing to save you and your team members time and energy.
+
+
+
+EXERCISE 6: Add docker-compose for deployment
+First:
+
+add docker-compose to your NodeJS application
+The reason is you want to have the whole configuration for starting the docker container in a file, in case you need to make changes to that, instead of plain docker command with parameters. Also in case you add a database later.
+
+
+
+Use: Node application from DigitalOcean exercises
+
+
+
+EXERCISE 7: Add "deploy to EC2" step to your pipeline
+Complete the previous pipeline by adding a deploy step for your previous NodeJS project with docker-compose.
+
+
+EXERCISE 8: Configure access from browser (EC2 Security Group)
+After executing the Jenkins pipeline successfully. The application is deployed, but you still can't access it from the browser. Again you need to open the correct port on the server. For that you:
+
+Configure EC2 security group to access your application from browser (using AWS CLI)
+
+
+EXERCISE 9: Configure automatic trigger of pipeline
+You team members are creating branches to add new features to the application or fix stuff, so you don't want to build and deploy these half-done features or bugfixes. You want that only master branch will be built and deployed. All other branches will just run tests. Add this logic to the Jenkinsfile.
+
+Add webhook to trigger pipeline automatically
+Add branch based logic
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
+
+10 - Container Orchestration with Kubernetes
+
+Exercises for Module "Container Orchestration with Kubernetes"
+
+
+Your bootcamp-java-mysql application (from Docker module exercises) is running with docker-compose on a server. This application is used often internally and by your company clients too. You noticed that the server isn't very stable: Often a database container dies or the application itself, or docker daemon must be restarted. At this time people can't access the app!
+
+So when this happens, the users write you that the app is down and ask you to fix it. You ssh into the server, restart containers with docker-compose and containers start again.
+
+But this is an annoying work, plus it doesn't look good for your company that your clients often can't access the app. So you want to make your application more reliable and highly available. You want to replicate both database and the app, so if one container goes down, there is always a backup. Also you don't want to rely on a single server, but have multiple, in case 1 whole server goes down or gets rebooted etc.
+
+
+
+So you look into different solutions and decide to use a container orchestration tool Kubernetes to solve the issue. For now you want to configure it and deploy your application manually, since it's a new tool and want to try it out manually before automating.
+
+
+
+EXERCISE 1: Create a Kubernetes cluster
+Create a Kubernetes cluster (Minikube or LKE)
+
+
+EXERCISE 2: Deploy Mysql with 3 replicas
+First of all, you want to deploy the mysql database.
+
+Deploy Mysql database with 3 replicas and volumes for data persistence
+To simplify the process you can use Helm for that.
+
+
+
+EXERCISE 3: Deploy your Java Application with 3 replicas
+Now you want to
+
+deploy your Java application with 3 replicas.
+With docker-compose, you were setting env_vars on server. In K8s there are own components for that, so
+
+create ConfigMap and Secret with the values and reference them in the application deployment config file.
+
+
+EXERCISE 4: Deploy phpmyadmin
+As a next step you
+
+deploy phpmyadmin to access Mysql UI.
+For this deployment you just need 1 replica, since this is only for your own use, so it doesn't have to be High Availability. A simple deployment.yaml file and internal service will be enough.
+
+
+
+
+
+Now your application setup is running in the cluster, but you still need a proper way to access the application. Also, you don't want users to access the application using the IP address and instead use a domain name. For that, you want to install Ingress controller in the cluster and configure ingress access for your application.
+
+
+
+EXERCISE 5: Deploy Ingress Controller
+Deploy Ingress Controller in the cluster - using Helm
+
+
+EXERCISE 6: Create Ingress rule
+Create Ingress rule for your application access
+
+
+EXERCISE 7: Port-forward for phpmyadmin
+However, you don't want to expose the phpmyadmin for security reasons. So you configure port-forwarding for the service to access on localhost, whenever you need it.
+
+Configure port-forwarding for phpmyadmin
+
+
+
+
+As the final step, you decide to create a helm chart for your Java application where all the configuration files are configurable. You can then tell developers how they can use it by setting all the chart values. This chart will be hosted in its own git repository.
+
+
+
+EXERCISE 8: Create Helm Chart for Java App
+
+All config files: service, deployment, ingress, configMap, secret, will be part of the chart
+Create custom values file as an example for developers to use when deploying the application
+Deploy the java application using the chart with helmfile
+Host the chart in its own git repository
+11 - Kubernetes on AWS - EKS
+Exercises for Module "Kubernetes on AWS"
+
+
+Right after you setup the cluster on LKE or Minikube and deployed your application inside, your manager comes to you to say, that the company wants to run Kubernetes also on AWS, again less overhead when managing just one platform. So they ask you to reconfigure your cluster on AWS and deploy your application there instead.
+
+
+
+
+
+EXERCISE 1: Create EKS cluster
+You decide to create an EKS cluster - the managed Kubernetes Service of AWS. To simplify the whole creation and configurations, you use eksctl. So you using eksctl you:
+
+create an EKS cluster with 3 Nodes and 1 Fargate profile
+This setup is only for your java application.
+
+Mysql and phpmyadmin and nginx controller will run on the EC2 Instances
+
+
+
+EXERCISE 2: Deploy Mysql and phpmyadmin
+You deploy mysql and phpmyadmin on EC2 nodes with the same setup as before.
+
+
+EXERCISE 3: Deploy your Java application
+You deploy your Java application using Fargate with 3 replicas and same setup as before
+
+
+
+
+Setup Continuous Deployment with Jenkins
+EXERCISE 4: Automate deployment
+Now your application is running. And when you or others make changes to it, Jenkins pipeline build the new image, but you have to manually deploy it into the cluster. But you know how annoying that is for you and your team from experience, so you want to automate deploying to the cluster as well.
+
+Setup automatic deploying to the cluster in the pipeline.
+
+
+EXERCISE 5: Use ECR as Docker repository
+Now your manager comes and tells you that all the projects in the company have containerized their applications, so there is no need for keeping and managing Nexus on the Droplet. Also since all projects have CI/CD there are hundreds of images pushed per day to Nexus repository and you need to manage the storage and cleanup policies to make space.
+
+So, company wants to use ECR instead, again to have everything on 1 platform and also to let AWS manage the repository with storage, cleanups etc.
+
+Therefore, you need to replace the docker repository in your pipeline with ECR
+
+
+EXERCISE 6: Configure Autoscaling
+Now your application is running, whenever a change is made, it gets automatically deployed in the cluster etc. This is great, but you notice that most of the time the 3 nodes you have are underutilized, especially at the weekends, because your containers aren't using that much resources. However, your company is paying the full price for all the servers.
+
+So you suggest to your manager, that you will be able to save the company some infrastructure costs, by configuring autoscaling. Your manager is happy about that and asks you to configure it.
+
+So go ahead and configure autoscaling to scale down to minimum 1 node when servers are underutilized and maximum 3 nodes when in full use.
+
+
+
+
+12 - Infrastructure as Code with Terraform
+Exercises for Module "Infrastructure as Code with Terraform"
+
+
+Your K8s cluster on AWS is successfully running and used as a production environment. Your team wants to have additional K8s environments for development, test and staging with the same exact configuration and setup, so they can properly test and try out new features before releasing to production. So you must create 3 more EKS clusters.
+
+But you don't want to do that manually 3 times, so you decide it would be much more efficient to script creating the EKS cluster and execute that same script 3 times to create 3 more identical environments.
+
+
+
+EXERCISE 1: Create Terraform project to spin up EKS cluster
+Create Terraform project that spins up an EKS cluster with the exact same setup that you created in the previous exercise. For the same Java Gradle application:
+
+Create EKS cluster with 3 Nodes and 1 Fargate profile only for your java application
+Deploy Mysql with 3 replicas with volumes for data persistence using helm
+Deploy your Java application with 3 replicas with ConfigMap and Secret
+
+
+EXERCISE 2: Configure remote state
+By default, TF stores state locally. You know that this is not practical when working in a team, because each user must make sure they always have the latest state data before running Terraform. To fix that, you
+
+Configure remote state with a remote data store for your terraform project
+
+
+You can use e.g. S3 bucket for storage.
+
+
+Now the team wants to make own changes in Terraform based on their project and adjust the infrastructure from time to time. They ask you to help them integrate TF in the code and make it part of the CI/CD pipeline.
+
+
+EXERCISE 3: Integrate Terraform in CI/CD pipeline
+Integrate Terraform provisioning the EKS cluster in the Java Gradle app Jenkins pipeline
+
+
+------------------------------------------------------------------------------------------------
+
+
+
+15 - Configuration Management with Ansible
+Exercises for Module "Configuration Management with Ansible"
+
+
+Use repository: https://gitlab.com/devops-bootcamp3/java-gradle-app
+
+EXERCISE 1: Build & Deploy Java Artifact
+You want to help developers automate deploying a Java application on a remote server directly from their local environment. So you create an Ansible project that builds the java application in the Java-gradle project. Then deploys the built jar artifact to a remote Ubuntu server.
+
+Developers will execute the Ansible script by specifying their first name as the Linux user which will start the application on a remote server. If the Linux User for that name doesn't exist yet on the remote server, Ansible playbook will create it.
+
+Also consider that the application may already be running from the previous jar file deployment, so make sure to stop the application and remove the old jar file from the remote server first, before copying and deploying the new one, also using Ansible.
+
+
+
+EXERCISE 2: Push Java Artifact to Nexus
+Developers like the convenience of running the application directly from their local dev environment. But after they test the application and see that everything works, they want to push the successful artifact to Nexus repository. So you write a play book that allows them to specify the jar file and pushes it to the team's Nexus repository.
+
+
+
+EXERCISE 3: Install Jenkins on EC2
+Your team wants to automate creating Jenkins instances dynamically when needed. So your task is to write an Ansible code that creates a new EC2 server and installs and runs Jenkins on it using a Jenkins user. It also installs npm and docker to be available for Jenkins builds.
+
+Now your team can use this project to spin up a new Jenkins server with 1 Ansible command.
+
+
+
+EXERCISE 4: Install Jenkins on Ubuntu
+Your company has infrastructure on multiple platforms. So in addition to creating the Jenkins instance dynamically on an EC2 server, you want to support creating it on an Ubuntu server too. Your task it to re-write your playbook (using include_tasks or conditionals) to support both flavors of the OS.
+
+
+
+EXERCISE 5: Install Jenkins as a Docker Container
+In addition to having different OS flavors as an option, your team also wants to be able to run Jenkins as a docker container. So you write another playbook that starts Jenkins as a Docker container with volumes for Jenkins home and Docker itself, because you want to be able to execute Docker commands inside Jenkins.
+
+Here is a reference of a full docker command for starting Jenkins container, which you should map to Ansible playbook:
+
+docker run --name jenkins -p 8080:8080 -p 50000:50000 -d \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /usr/local/bin/docker:/usr/bin/docker \
+-v jenkins_home:/var/jenkins_home \
+jenkins/jenkins:lts
+Your team is happy, because they can now use Ansible to quickly spin up a Jenkins server for different needs.
+
+
+Use repository: https://gitlab.com/devops-bootcamp3/bootcamp-java-mysql
+
+EXERCISE 6: Web server and Database server configuration
+Great, you have helped automate some IT processes in your company. Now another team wants your support as well. They want to automate deploying and configuring web server and database server on AWS. The project is not dockerized and they are using a traditional application setup.
+
+The setup you and the team agreed on is the following: You create a dedicated Ansible server on AWS. In the same VPC as the Ansible server, you create 2 servers, 1 for deploying your Java application and another one for running a MySQL database. Also, the database should not be accessible from outside, only within the VPC, so the DB server shouldn't have a public IP address.
+
+Now your task is to write Ansible playbook that creates these servers. Then it installs and starts MySQL server on the EC2 instance without public IP address. And finally it deploys and runs the Java web application on another EC2 instance.
+
+Playbook also tests accessing the deployed web application from the browser and prints the result.
+
+You expect this Ansible project to grow in size and complexity later and also because you expect other DevOps team members to add more tasks etc to the project, so you decide to refactor it right away with roles to keep the code clean and structured, and also so that each team member can develop and test their own role functionality separately without affecting the work of others. So create roles in your Ansible project for web server and db server tasks.
+
+
+
+EXERCISE 7: Deploy Java MySQL Application in Kubernetes
+After some time the team decides they want to move to a more modern infrastructure setup, so they want to dockerize their application and start deploying to a K8s cluster.
+
+However, K8s is a very new tool for them, and they don't want to learn kubectl and K8s configuration syntax and how all that works, so they want the deployment process to be automated so that it's much easier for them to deploy the application to the cluster without much K8s knowledge.
+
+So they ask you to help them in the process. You create K8s configuration files for deployments, services for Java and MySQL and PHP MyAdmin applications as well as configMap and Secret for the Database connectivity. And you deploy everything in a cluster using Ansible automated script.
+
+Note: MySQL application will run as 1 replica and for the Java Application you will need to create and push an image to a Docker repo. You can create the K8s cluster with TF script or any other way you prefer.
+
+
+
+EXERCISE 8: Deploy MySQL Chart in Kubernetes
+Everything works great, but the team worries about the application availability, so wants to run the MySQL DB in multiple replicas. So they ask you to help them solve this problem. Your task is to deploy a MySQL with 3 replicas from a helm chart using Ansible script in place of the currently running single MySQL instance.
+
+
+EXERCISE 9: Deploy New Application in Kubernetes from CI/CD Pipeline
+Now developers want to optimize their work by automating the whole deployment process, once they have committed changes to the application repository. So they ask you to help them set up a CI/CD pipeline for their project that builds a new docker image of the application with an incremented version and deploys it to K8s cluster.
+
+You consult with your DevOps team members, and you decide that you will use one of the automated Jenkins deployment scripts you wrote for EC2 or Droplet servers. Plus you will add installing Ansible to the playbook, so that you can execute Ansible commands directly on a Jenkins server.
+
+In your Jenkinsfile, you will execute Ansible playbooks for building the application and docker image from it, pushing it to the Docker registry and deploying the new application version to the cluster.
+
+
+
+EXERCISE 10: Use Existing Roles
+As the last step, check if there are existing roles from Ansible Galaxy that you can use anywhere in your Ansible Projects, instead of writing your own tasks. And use at least 1 existing role in one of your Ansible projects.
+
+ 16 - Monitoring with Prometheus
+Exercises for Module "Monitoring with Prometheus"
+Use repository: https://gitlab.com/devops-bootcamp3/bootcamp-java-mysql/-/tree/feature/monitoring
+
+
+
+Context
+
+You and your team are running the following setup in the K8s cluster:
+
+Java application that uses Mysql DB and is accessible from browser using Ingress. It's all running fine, but sometimes you have issues where Mysql DB is not accessible or Ingress has some issues and users can't access your Java application. And when this happens, you and your team spend a lot of time figuring out what the issue is and troubleshooting within the cluster. Also, most of the time when these issues happen, you are not even aware of them until an application user writes to the support team that the application isn't working or developers write you an email that things need to be fixed.
+
+As an improvement, you have decided to increase visibility in your cluster to know immediately when such issues happen and proactively fix them. Also, you want a more efficient way to pinpoint the issues right away, without hours of troubleshooting. And maybe even prevent such issues from happening by staying alert to any possible issues and fixing them before they even happen.
+
+Your manager suggested using Prometheus, since it's a well known tool with a large community and is widely used, especially in K8s environment.
+
+So you and your team are super motivated to improve the application observability using Prometheus monitoring.
+
+
+EXERCISE 1: Deploy your Application and Prepare the Setup
+
+Create a K8s cluster
+Deploy Mysql database for your Java application with 2 replicas (You can use the following helm chart: https://github.com/bitnami/charts/tree/master/bitnami/mysql)
+Deploy Java Maven application with 3 replicas that talks to the Mysql DB
+Deploy Nginx Ingress Controller (You can use the following helm chart: https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx)
+Now configure access to your Java application using an Ingress rule
+
+
+EXERCISE 2: Start Monitoring your Applications
+
+Note: as you've learned, we deploy separate exporter applications for different services to monitor third party applications. But, some cloud native applications may have the metrics scraping configuration inside and not require an addition exporter application. So check whether the chart of that application supports scraping configuration before deploying a separate exporter for it.
+
+Configure metrics scraping for Nginx Controller
+Configure metrics scraping for Mysql
+Configure metrics scraping for Java application (Note: Java application exposes metrics on port 8081, NOT on /metrics endpoint)
+Check in Prometheus UI, that all three application metrics are being collected
+
+
+EXERCISE 3: Configure Alert Rules
+
+Now it's time to configure alerts for critical issues that may happen with any of the applications.
+
+Configure an alert rule for nginx-ingress: More than 5% of HTTP requests have status 4xx
+Configure alert rules for Mysql: All Mysql instances are down & Mysql has too many connections
+Configure alert rule for the Java application: Too many requests
+Configure alert rule for a K8s component: StatefulSet replicas mismatch (Since Mysql is deployed as a StatefulSet, if one of the replicas goes down, we want to be notified)
+
+
+EXERCISE 4: Send Alert Notifications
+
+Great job! You have added observability to your cluster, and you have configured your monitoring with all the important alerts. Now when issues happen in the cluster, you want to automatically notify people who are responsible for fixing the issue or at least observing the issue, so it doesn't break the cluster.
+
+Configure alert manager to send all issues related to Java or Mysql application to the developer team's Slack channel. (Hint: You can use the following guide to set up a Slack channel for the notifications: https://www.freecodecamp.org/news/what-are-github-actions-and-how-can-you-automate-tests-and-slack-notifications/#part-2-post-new-pull-requests-to-slack)
+Configure alert manager to send all issues related Nginx Ingress Controller or K8s components to K8s administrator's email address.
+Note: Of course, in your case, this can be your own email address or your own Slack channel.
+
+
+
+EXERCISE 5: Test the Alerts
+
+Of course, you want to check now that your whole setup works, so try to simulate issues and trigger 1 alert for each notification channel (Slack and E-mail) 
+
+
+
+EXERCISE 6: Configure Grafana Dashboards
+
+Awesome! You and your team are super happy with the results. Now, as the final step, you want to configure Grafana dashboards for additional visibility of what's going on in the cluster.
+
+Configure Grafana dashboard for Nginx Ingress Controller metrics
+Configure Grafana dashboard for Mysql metrics
+Configure Grafana dashboard for your Java application
+
+
+---------------------------------------------------------------------------------
+
+
+13 - Programming with Python
+Exercises for Module "Programming with Python"
+
+EXERCISE 1: Working with Lists
+Using the following list:
+
+my_list = [1, 2, 2, 4, 4, 5, 6, 8, 10, 13, 22, 35, 52, 83]
+Write a program that prints out all the elements of the list that are higher than or equal 10.
+Instead of printing the elements one by one, make a new list that has all the elements higher than or equal 10 from this list in it and print out this new list.
+
+Ask the user for a number as input and return a list that contains only those elements from my_list that are higher than the number given by the user.
+
+EXERCISE 2: Working with Dictionaries
+Using the following dictionary:
+
+employee = {
+  "name": "Tim",
+  "age": 30,
+  "birthday": "1990-03-10",
+  "job": "DevOps Engineer"
+}
+Write a Python Script that:
+
+Updates the job to Software Engineer
+Removes the age key from the dictionary
+Loops through the dictionary and prints the key:value pairs one by one
+
+
+Using the following 2 dictionaries:
+
+dict_one = {'a': 100, 'b': 400} 
+dict_two = {'x': 300, 'y': 200}
+Write a Python Script that:
+
+Merges these two Python dictionaries into 1 new dictionary.
+Sums up all the values in the new dictionary and print it out
+Prints the max and minimum values of the dictionary
+
+
+EXERCISE 3: Working with List of Dictionaries
+Using a list of 2 dictionaries:
+
+employees = [{
+  "name": "Tina",
+  "age": 30,
+  "birthday": "1990-03-10",
+  "job": "DevOps Engineer",
+  "address": {
+    "city": "New York",
+    "country": "USA"
+  }
+},
+{
+  "name": "Tim",
+  "age": 35,
+  "birthday": "1985-02-21",
+  "job": "Developer",
+  "address": {
+    "city": "Sydney",
+    "country": "Australia"
+  }
+}]
+Write a Python Program that:
+
+Prints out - the name, job and city of each employee using a loop. The program must work for any number of employees in the list, not just 2.
+Prints the country of the second employee in the list by accessing it directly without the loop.
+
+
+EXERCISE 4: Working with Functions
+Write a function that accepts a list of dictionaries with employee age (see example list from the Exercise 3) and prints out the name and age of the youngest employee.
+Write a function that accepts a string and calculates the number of upper case letters and lower case letters.
+Write a function that prints the even numbers from a provided list.
+For cleaner code, declare these functions in its own helper Module and use them in the main.py file
+
+EXERCISE 5: Python Program 'Calculator'
+Write a simple calculator program that:
+
+takes user input of 2 numbers and operation to execute
+handles following operations: plus, minus, multiply, divide
+does proper user validation and give feedback: only numbers allowed
+Keeps the Calculator program running until the user types “exit”
+Keeps track of how many calculations the user has taken, and when the user exits the calculator program, prints out the number of calculations the user did
+Concepts covered: working with different data types, conditionals, type conversion, user input, user input validation
+
+
+
+EXERCISE 6: Python Program 'Guessing Game'
+Write a program that:
+
+runs until the user guesses a number (hint: while loop)
+generates a random number between 1 and 9 (including 1 and 9)
+asks the user to guess the number
+then prints a message to the user, whether they guessed too low, too high
+if the user guesses the number right, print out YOU WON! and exit the program
+Hint: Use the built-in random module to generate random numbers https://docs.python.org/3.3/library/random.html
+
+Concepts covered: Built-In Module, User Input, Comparison Operator, While loop
+
+
+
+EXERCISE 7: Working with Classes and Objects
+Imagine you are working in a university and need to write a program, which handles data of students, professors and lectures. To work with this data you create classes and objects:
+
+a) Create a Student class
+
+with properties:
+
+first name
+last name
+age
+lectures he/she attends
+with methods:
+
+can print the full name
+can list the lectures, which the student attends
+can add new lectures to the lectures list (attend a new lecture)
+can remove lectures from the lectures list (leave a lecture)
+b) Create a Professor class
+
+with properties:
+
+first name
+last name
+age
+subjects he/she teaches
+with methods:
+
+can print the full name
+can list the subjects they teach
+can add new subjects to the list
+can remove subjects from the list
+c) Create a Lecture class
+
+with properties:
+
+name
+max number of students
+duration
+list of professors giving this lecture
+with methods:
+
+printing the name and duration of the lecture
+adding professors to the list of professors giving this lecture
+d) Bonus task
+
+As both students and professors have a first name, last name and age, you think of a cleaner solution:
+
+Inheritance allows us to define a class that inherits all the methods and properties from another class.
+
+Create a Person class, which is the parent class of Student and Professor classes
+This Person class has the following properties: "first_name", "last_name" and "age"
+and following method: "print_name", which can print the full name
+So you don't need these properties and method in the other two classes. You can easily inherit these.
+Change Student and Professor classes to inherit "first_name", "last_name", "age" properties and "print_name" method from the Person class
+
+
+EXERCISE 8: Working with Dates
+Write a program that:
+
+accepts user's birthday as input
+and calculates how many days, hours and minutes are remaining till the birthday
+prints out the result as a message to the user
+
+
+EXERCISE 9: Working with Spreadsheets
+Write a program that:
+
+reads the provided spreadsheet file "employees.xlsx" (see Download section at the bottom) with the following information/columns: "name", "years of experience", "job title", "date of birth"
+creates a new spreadsheet file "employees_sorted.xlsx" with following info/columns: "name", "years of experience", where the years of experience is sorted in descending order: so the employee name with the most experience in years is on top.
+
+
+EXERCISE 10: Working with REST APIs
+Write a program that:
+
+connects to GitHub API
+gets the projects for a specific GitHub user
+prints the project names
+Download
+
+14 - Automation with Python
+Exercises for Module "Automation with Python"
+
+EXERCISE 1: Working with Subnets in AWS
+Get all the subnets in your default region
+Print the subnet Ids
+
+EXERCISE 2: Working with IAM in AWS
+Get all the IAM users in your AWS account
+For each user, print out the name of the user and when they were last active (hint: Password Last Used attribute)
+Print out the user ID and name of the user who was active the most recently
+
+
+EXERCISE 3: Automate Running and Monitoring Application on EC2 instance
+Write Python program which automatically creates EC2 instance, install Docker inside and starts Nginx application as Docker container and starts monitoring the application as a scheduled task. Write the program with the following steps:
+
+Start EC2 instance in default VPC
+Wait until the EC2 server is fully initialized
+Install Docker on the EC2 server
+Start nginx container
+Open port for nginx to be accessible from browser
+Create a scheduled function that sends request to the nginx application and checks the status is OK
+If status is not OK 5 times in a row, it restarts the nginx application
+
+EXERCISE 4: Working with ECR in AWS
+Get all the repositories in ECR
+Print the name of each repository
+Choose one specific repository and for that repository, list all the image tags inside, sorted by date. Where the most recent image tag is on top
+
+EXERCISE 5: Python in Jenkins Pipeline
+Create a Jenkins job that fetches all the available images from your application's ECR repository using Python. It allows the user to select the image from the list through user input and deploys the selected image to the EC2 server using Python.
+
+Instructions:
+
+Start EC2 instance and install Docker on it
+Install Python in Jenkins
+Create 3 Docker images with tags 1.0, 2.0, 3.0 from one of the previous projects
+Create a Jenkins Pipeline with the following steps:
+Fetch all 3 images from the ECR repository (using Python)
+Let the user select the image from the list (hint: https://www.jenkins.io/doc/pipeline/steps/pipeline-input-step/)
+SSH into the EC2 server (using Python)
+Run docker login to authenticate with ECR repository (using Python)
+Start the container from the selected image from step 2 on EC2 instance (using Python)
+Validate that the application was successfully started and is accessible by sending a request to the application (using Python)
